@@ -1,5 +1,5 @@
 export default function Home() {
   return (
-    <main>Main</main>
+    <main className='bg-slate-300/20'>Main</main>
   )
 }
