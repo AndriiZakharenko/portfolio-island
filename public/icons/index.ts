@@ -16,6 +16,13 @@ import tailwindcss from './tailwindcss.svg'
 import typescript from './typescript.svg'
 import linkedin from './linkedin.svg'
 import twitter from './twitter.svg'
+import postman from './postman.svg'
+import vercel from './vercel.svg'
+import eslint from './eslint.svg'
+import prettier from './prettier.svg'
+import vite from './vite.svg'
+import figma from './figma.svg'
+import docker from './docker.svg'
 import car from './car.svg'
 import estate from './estate.svg'
 import pricewise from './pricewise.svg'
@@ -46,6 +53,7 @@ export {
     typescript,
     linkedin,
     twitter,
+    postman,
     car,
     estate,
     pricewise,
@@ -55,5 +63,11 @@ export {
     arrow,
     contact,
     soundon,
-    soundoff
+    soundoff,
+    vercel,
+    eslint,
+    prettier,
+    vite,
+    figma,
+    docker
 }
