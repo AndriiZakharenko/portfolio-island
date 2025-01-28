@@ -23,12 +23,12 @@ import prettier from './prettier.svg'
 import vite from './vite.svg'
 import figma from './figma.svg'
 import docker from './docker.svg'
-import car from './car.svg'
+import carepulse from './carepulse.svg'
 import estate from './estate.svg'
-import pricewise from './pricewise.svg'
-import snapgram from './snapgram.svg'
-import summiz from './summiz.svg'
-import threads from './threads.svg'
+import apple from './apple.svg'
+import hilink from './hilink.svg'
+import guitar from './guitar.svg'
+import xora from './xora.svg'
 import arrow from './arrow.svg'
 import contact from './contact.svg'
 import soundon from './soundon.png'
@@ -54,12 +54,12 @@ export {
     linkedin,
     twitter,
     postman,
-    car,
+    carepulse,
     estate,
-    pricewise,
-    snapgram,
-    summiz,
-    threads,
+    apple,
+    hilink,
+    guitar,
+    xora,
     arrow,
     contact,
     soundon,
