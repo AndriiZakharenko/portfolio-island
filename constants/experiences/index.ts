@@ -42,7 +42,7 @@ export const experiences = [
     company_name: "Freelance",
     icon: freelance,
     iconBg: "#fbab18",
-    date: "Jan 2024 - Present",
+    date: "Nov 2024 - Present",
     points: [
       "Developing and maintaining web applications using React.js and other related technologies.",
       "Implementing responsive design and ensuring cross-browser compatibility.",

@@ -1,5 +1,6 @@
 "use client";
 
+import HomeInfo from "@/components/HomeInfo";
 import { soundoff, soundon } from "@/public/icons";
 import { sakura } from "@/public/music";
 import Image from "next/image";
@@ -33,8 +34,10 @@ export default function Home() {
   }, [isPlayingMusic]);
 
   return (
-    <main className="h-full">
-      Main
+    <section className="w-full h-screen relative">
+      <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+        <HomeInfo />
+      </div>
       <div className="absolute bottom-2 left-2">
         <Image
           src={!isPlayingMusic ? soundoff : soundon}
@@ -44,6 +47,6 @@ export default function Home() {
           priority
         />
       </div>
-    </main>
+    </section>
   );
 }
