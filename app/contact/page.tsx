@@ -1,5 +1,7 @@
 "use client";
 
+import Alert from "@/components/Alert";
+import useAlert from "@/hooks/useAlert";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 
@@ -7,6 +9,7 @@ const Contact = () => {
   const formRef = useRef(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const { alert, showAlert, hideAlert } = useAlert();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -35,35 +38,35 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          //   showAlert({
-          //     show: true,
-          //     text: "Thank you for your message 😃",
-          //     type: "success",
-          //   });
+          showAlert({
+            text: "Thank you for your message 😃",
+            type: "success",
+          });
 
           setTimeout(() => {
-            // hideAlert(false);
+            hideAlert();
             setForm({
               name: "",
               email: "",
               message: "",
             });
-          }, 3000);
+          }, 5000);
         },
         (error) => {
           setLoading(false);
           console.error(error);
-          //   showAlert({
-          //     show: true,
-          //     text: "I didn't receive your message 😢",
-          //     type: "danger",
-          //   });
+          showAlert({
+            text: "I didn't receive your message 😢",
+            type: "danger",
+          });
         }
       );
   };
 
   return (
     <section className="relative flex lg:flex-row flex-col max-container">
+      {alert.show && <Alert {...alert} />}
+
       <div className="flex-1 min-w-[50%] flex flex-col">
         <h1 className="head-text">Get in Touch</h1>
         <form
