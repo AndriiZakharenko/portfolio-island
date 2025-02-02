@@ -3,6 +3,7 @@
 import HomeInfo from "@/components/HomeInfo";
 import Loader from "@/components/Loader";
 import Island from "@/models/Island";
+import Sky from "@/models/Sky";
 import { soundoff, soundon } from "@/public/icons";
 import { sakura } from "@/public/music";
 import { Canvas } from "@react-three/fiber";
@@ -89,6 +90,8 @@ export default function Home() {
             intensity={1}
           />
 
+          <Sky />
+          
           <Island
             position={islandPosition}
             rotation={islandRotation}
