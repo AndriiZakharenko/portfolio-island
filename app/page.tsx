@@ -2,6 +2,7 @@
 
 import HomeInfo from "@/components/HomeInfo";
 import Loader from "@/components/Loader";
+import Bird from "@/models/Bird";
 import Island from "@/models/Island";
 import Sky from "@/models/Sky";
 import { soundoff, soundon } from "@/public/icons";
@@ -90,8 +91,10 @@ export default function Home() {
             intensity={1}
           />
 
+          <Bird />
+
           <Sky />
-          
+
           <Island
             position={islandPosition}
             rotation={islandRotation}
