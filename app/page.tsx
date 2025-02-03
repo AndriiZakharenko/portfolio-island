@@ -4,6 +4,7 @@ import HomeInfo from "@/components/HomeInfo";
 import Loader from "@/components/Loader";
 import Bird from "@/models/Bird";
 import Island from "@/models/Island";
+import Plane from "@/models/Plane";
 import Sky from "@/models/Sky";
 import { soundoff, soundon } from "@/public/icons";
 import { sakura } from "@/public/music";
@@ -100,6 +101,7 @@ export default function Home() {
             rotation={islandRotation}
             scale={islandScale}
           />
+          <Plane />
         </Suspense>
       </Canvas>
 
