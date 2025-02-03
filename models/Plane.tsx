@@ -4,14 +4,13 @@
 "use client";
 
 import { useGLTF } from "@react-three/drei";
-import { useRef } from "react";
 
-const Plane = () => {
-  const planeRef = useRef();
+
+const Plane = ({ isRotating, ...props }) => {
   const plane = useGLTF("/3d/plane.glb");
 
   return (
-    <mesh ref={planeRef}>
+    <mesh {...props}>
       <primitive object={plane.scene} />
     </mesh>
   );

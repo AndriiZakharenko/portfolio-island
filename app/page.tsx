@@ -15,10 +15,19 @@ import { Suspense, useEffect, useRef, useState } from "react";
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
-  const [isClient, setIsClient] = useState(false); // Track if we're in the client-side
+  const [isClient, setIsClient] = useState(false);
   const [islandScale, setIslandScale] = useState([1, 1, 1]);
   const [islandPosition, setIslandPosition] = useState([0, -6.5, -43.4]);
   const [islandRotation, setIslandRotation] = useState([0, -6.5, -43.4]);
+
+  const [planeScale, setPlaneScale] = useState<[number, number, number]>([
+    3, 3, 3,
+  ]);
+  const [planePosition, setPlanePosition] = useState<[number, number, number]>([
+    0, -4, -4,
+  ]);
+
+  const [isRotating, setIsRotating] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -58,13 +67,36 @@ export default function Home() {
     return [screenScale, screenPosition, screenRotation];
   };
 
+  const adjustPlaneForScreenSize = (): [
+    [number, number, number],
+    [number, number, number]
+  ] => {
+    let screenScale: [number, number, number];
+    let screenPosition: [number, number, number];
+
+    if (window.innerWidth < 768) {
+      screenScale = [1.5, 1.5, 1.5];
+      screenPosition = [0, -1.5, 0];
+    } else {
+      screenScale = [3, 3, 3];
+      screenPosition = [0, -4, -4];
+    }
+
+    return [screenScale, screenPosition];
+  };
+
   useEffect(() => {
     if (!isClient) return;
+
     const [screenScale, screenPosition, screenRotation] =
       adjustIslandForScreenSize();
     setIslandScale(screenScale);
     setIslandPosition(screenPosition);
     setIslandRotation(screenRotation);
+
+    const [planeScreenScale, planeScreenPosition] = adjustPlaneForScreenSize();
+    setPlaneScale(planeScreenScale);
+    setPlanePosition(planeScreenPosition);
   }, [isClient]);
 
   return (
@@ -74,7 +106,9 @@ export default function Home() {
       </div>
 
       <Canvas
-        className="w-full h-screen bg-transparent"
+        className={`w-full h-screen bg-transparent ${
+          isRotating ? "cursor-grabbing" : "cursor-grab"
+        }`}
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
@@ -93,15 +127,22 @@ export default function Home() {
           />
 
           <Bird />
-
           <Sky />
 
           <Island
             position={islandPosition}
             rotation={islandRotation}
             scale={islandScale}
+            isRotating={isRotating}
+            setIsRotating={setIsRotating}
           />
-          <Plane />
+
+          <Plane
+            isRotating={isRotating}
+            position={planePosition}
+            scale={planeScale}
+            rotation={[0, 20.1, 0]}
+          />
         </Suspense>
       </Canvas>
 
