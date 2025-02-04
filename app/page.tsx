@@ -29,6 +29,8 @@ export default function Home() {
 
   const [isRotating, setIsRotating] = useState(false);
 
+  const [currentStage, setCurrentStage] = useState(1);
+
   useEffect(() => {
     setIsClient(true);
     audioRef.current = new Audio(sakura);
@@ -135,6 +137,7 @@ export default function Home() {
             scale={islandScale}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
+            setCurrentStage={setCurrentStage}
           />
 
           <Plane

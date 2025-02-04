@@ -3,15 +3,25 @@
 
 "use client";
 
-import { useGLTF } from "@react-three/drei";
-
+import { useAnimations, useGLTF } from "@react-three/drei";
+import { useEffect, useRef } from "react";
 
 const Plane = ({ isRotating, ...props }) => {
-  const plane = useGLTF("/3d/plane.glb");
+  const ref = useRef();
+  const { scene, animations } = useGLTF("/3d/plane.glb");
+  const { actions } = useAnimations(animations, ref);
+
+  useEffect(() => {
+    if (isRotating) {
+      actions["Take 001"].play();
+    } else {
+      actions["Take 001"].stop();
+    }
+  }, [actions, isRotating]);
 
   return (
-    <mesh {...props}>
-      <primitive object={plane.scene} />
+    <mesh {...props} ref={ref}>
+      <primitive object={scene} />
     </mesh>
   );
 };
