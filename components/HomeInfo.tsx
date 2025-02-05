@@ -1,3 +1,4 @@
+import React from "react";
 import { popupContent } from "@/constants/popupContent/popupContent";
 import { arrow } from "@/public/icons";
 import Image from "next/image";
@@ -13,7 +14,10 @@ const HomeInfo = ({ currentStage }: HomeInfoProps) => {
   if (!content) return null;
 
   if (content.type === "text") {
-    return content.content;
+    return React.cloneElement(content.content, {
+      className:
+        "sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5",
+    });
   }
 
   if (content.type === "link") {
