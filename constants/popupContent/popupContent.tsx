@@ -20,9 +20,9 @@ export const popupContent: Record<number, PopupContent> = {
   1: {
     type: "text",
     content: (
-      <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
+      <h1>
         Hi, I&apos;m
-        <span className="font-semibold mx-2 text-white">Andrii</span>
+        <span className="font-semibold mx-2"> Andrii</span>
         👋
         <br />a Software Engineer from Ukraine 🇺🇦
       </h1>
