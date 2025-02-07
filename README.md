@@ -10,11 +10,13 @@
 - CSS (Tailwind)
 - JS
 - Adaptive
-- React (19)
+- React (18)
 - ReactDom
-- Next (15)
+- Next (14)
 - Vercel
 - Typescript
+- Emailjs
+- Three
 
 ### Tools
 
