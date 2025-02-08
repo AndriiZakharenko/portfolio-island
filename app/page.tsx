@@ -102,7 +102,7 @@ export default function Home() {
   }, [isClient]);
 
   return (
-    <section className="w-full h-screen relative">
+    <section className="w-full h-screen relative overflow-hidden">
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
         {currentStage && <HomeInfo currentStage={currentStage} />}
       </div>
@@ -149,14 +149,26 @@ export default function Home() {
         </Suspense>
       </Canvas>
 
-      <div className="absolute bottom-2 left-2">
-        <Image
-          src={!isPlayingMusic ? soundoff : soundon}
-          alt="jukebox"
-          onClick={() => setIsPlayingMusic(!isPlayingMusic)}
-          className="w-10 h-10 cursor-pointer object-contain"
-          priority
-        />
+      <div className="absolute bottom-2 left-2 transition-transform duration-300 ease-in-out hover:scale-105">
+        <div className="relative">
+          <span
+            className={`absolute inset-0 w-10 h-10 rounded-full bg-blue-500 opacity-50 ${
+              isPlayingMusic ? "animate-ping" : "hidden"
+            }`}
+          />
+          <span
+            className={`absolute inset-0 w-14 h-14 rounded-full bg-blue-500 opacity-30 ${
+              isPlayingMusic ? "animate-ping delay-300" : "hidden"
+            }`}
+          />
+          <Image
+            src={!isPlayingMusic ? soundoff : soundon}
+            alt="jukebox"
+            onClick={() => setIsPlayingMusic(!isPlayingMusic)}
+            className="w-10 h-10 cursor-pointer object-contain relative"
+            priority
+          />
+        </div>
       </div>
     </section>
   );
